@@ -1261,3 +1261,5 @@ export class Blaze2D {
     }
     createRadialGradient(x0, y0, r0, x1, y1, r1) {
         return { isGradient:true, type:'radial', x0, y0, r0, x1, y1, r1, stops:[], addColorStop(o,c){this.stops.push({offset:o,color:c});} };
+    }}
+
