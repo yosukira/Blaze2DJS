@@ -867,34 +867,40 @@ export class Blaze2D {
         }
     }
 
-    drawGPUDamageNumber(text, x, y, vx, vy, startTime, duration, size, color, alpha=1.0) {
-        if (!text) return;
-        text = text.toString();
-        const rgba      = typeof color==='string' ? this._parseColor(color) : (Array.isArray(color)?color:[1,1,1,1]);
-        const baseScale = size / 64;
-        let totalW = 0;
-        for (const c of text) { const i=this.bitmapFont.get(c); totalW += i?i.width:32; }
-        let curCharX = -totalW / 2;
-        for (const c of text) {
-            const i = this.bitmapFont.get(c);
-            if (!i) { curCharX+=32; continue; }
-            if (this.dnCurrentTexture!==i.texture || this.dnBatchCount>=this.dnMaxBatchSize) {
-                this.flushDamageNumbers(); this.dnCurrentTexture=i.texture;
-            }
-            const x0=-i.padding, y0=-(i.renderHeight/2), x1=x0+i.renderWidth, y1=y0+i.renderHeight;
-            const o=this.dnBatchCount*4*this.dnVertexStride, d=this.dnVertexData;
-            for (let k=0; k<4; k++) {
-                const vo=o+k*this.dnVertexStride;
-                const vx2=k<2?x0:x1, vy2=k===0||k===3?y0:y1;
-                const vu=k<2?i.u0:i.u1, vv=k===0||k===3?i.v0:i.v1;
-                d[vo]=vx2; d[vo+1]=vy2; d[vo+2]=vu; d[vo+3]=vv;
-                d[vo+4]=x; d[vo+5]=y; d[vo+6]=curCharX; d[vo+7]=0;
-                d[vo+8]=vx; d[vo+9]=vy; d[vo+10]=startTime; d[vo+11]=duration; d[vo+12]=baseScale;
-                d[vo+13]=rgba[0]; d[vo+14]=rgba[1]; d[vo+15]=rgba[2]; d[vo+16]=alpha;
-            }
-            this.dnBatchCount++; curCharX+=i.width;
+drawGPUDamageNumber(text, x, y, vx, vy, startTime, duration, size, color, alpha=1.0) {
+    if (!text) return;
+    text = text.toString();
+    const rgba      = typeof color==='string' ? this._parseColor(color) : (Array.isArray(color)?color:[1,1,1,1]);
+    const baseScale = size / 64;
+    let totalW = 0;
+    for (const c of text) { const i=this.bitmapFont.get(c); totalW += i?i.width:32; }
+    let curCharX = -totalW / 2;
+    for (const c of text) {
+        const i = this.bitmapFont.get(c);
+        if (!i) { curCharX+=32; continue; }
+        if (this.dnCurrentTexture!==i.texture || this.dnBatchCount>=this.dnMaxBatchSize) {
+            this.flushDamageNumbers(); this.dnCurrentTexture=i.texture;
         }
+        const x0=-i.padding,     y0=-(i.renderHeight/2);
+        const x1=x0+i.renderWidth, y1=y0+i.renderHeight;
+        const verts = [
+            [x0, y0, i.u0, i.v0],
+            [x1, y0, i.u1, i.v0],
+            [x1, y1, i.u1, i.v1],
+            [x0, y1, i.u0, i.v1]
+        ];
+        const o = this.dnBatchCount * 4 * this.dnVertexStride;
+        const d = this.dnVertexData;
+        for (let k=0; k<4; k++) {
+            const vo = o + k * this.dnVertexStride;
+            d[vo]=verts[k][0]; d[vo+1]=verts[k][1]; d[vo+2]=verts[k][2]; d[vo+3]=verts[k][3];
+            d[vo+4]=x;         d[vo+5]=y;            d[vo+6]=curCharX;    d[vo+7]=0;
+            d[vo+8]=vx;        d[vo+9]=vy;           d[vo+10]=startTime;  d[vo+11]=duration; d[vo+12]=baseScale;
+            d[vo+13]=rgba[0];  d[vo+14]=rgba[1];     d[vo+15]=rgba[2];    d[vo+16]=alpha;
+        }
+        this.dnBatchCount++; curCharX+=i.width;
     }
+}
 
     flushDamageNumbers() {
         if (this.dnBatchCount===0 || !this.dnCurrentTexture) return;
