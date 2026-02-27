@@ -18,6 +18,8 @@ Designed specifically for "Vampire Survivors" style games (Bullet Heaven / Horde
 
 ### 🎮 Live Demo
 * 🕹️ **[Survival Game Demo](https://bsstata.icu:5000)** - A fully playable web game utilizing `Blaze2D`. It renders thousands of monsters, particles, and GPU-calculated damage numbers at a buttery smooth 60FPS. *(Note: Hosted on a custom server).*
+* <img width="864" height="1920" alt="image" src="https://github.com/user-attachments/assets/5cd0b699-37b6-4a42-867e-e1c04560abf0" />
+
 
 ### ✨ Features
 - 🔄 **Canvas 2D API Hijacking:** Supports `save()`, `restore()`, `translate()`, `globalAlpha`, `drawImage`, and even complex paths (via offscreen texture caching). Almost zero code changes needed to upgrade your existing game.
@@ -71,6 +73,8 @@ Blaze2D 是一个极高性能的 WebGL 2D 渲染器。它完美模拟了原生�
 
 ### 🎮 Demo
 * 🕹️ **[割草游戏Demo](https://bsstata.icu:5000)** - 这是一个完整的可玩网页游戏，底层渲染全部由 `Blaze2D` 接管。在海量怪物与全屏特效下依然保持 60 帧满帧运行。（注：部署在独立服务器，首次加载请稍候）。
+* <img width="864" height="1920" alt="image" src="https://github.com/user-attachments/assets/5d0bf2eb-941e-481b-9584-ee91390d78cb" />
+
 
 ### ✨ 特性
 - 🔄 **无缝接管 Canvas 2D:** 实现了 `save()`, `restore()`, `translate()`, `globalAlpha`, `drawImage` 等标准 API。对于 WebGL 难以处理的复杂路径（如贝塞尔曲线描边文字），采用离屏缓存降级策略。你几乎不需要修改业务代码就能让游戏帧率翻倍。
