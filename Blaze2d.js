@@ -822,7 +822,10 @@ export class Blaze2D {
         gl.vertexAttribPointer(locs.texCoord, 2, gl.FLOAT, false, 16, 8);
         gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
     }
-
+    measureText(text) {
+    this.textCtx.font = this._state.font;
+    return this.textCtx.measureText(text);
+}
     fillText(text, x, y)   { this._drawText(text, x, y, false); }
     strokeText(text, x, y) { this._drawText(text, x, y, true); }
 
