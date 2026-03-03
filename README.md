@@ -8,7 +8,7 @@
 
 **WebGL Drop-in Accelerator for HTML5 Canvas 2D.**
 
-Blaze2D is a high-performance, lightweight WebGL 2D rendering engine. It mimics the native `CanvasRenderingContext2D` API while providing massive hardware acceleration. 
+Blaze2D is a high-performance, lightweight WebGL 2D rendering engine. It is a drop-in replacement for CanvasRenderingContext2D.
 
 Designed specifically for "Vampire Survivors" style games (Bullet Heaven / Horde Survival), where drawing 10,000+ sprites and damage numbers simultaneously will instantly crash a standard Canvas 2D context.
 
