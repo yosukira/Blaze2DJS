@@ -17,7 +17,7 @@ Designed specifically for "Vampire Survivors" style games (Bullet Heaven / Horde
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ### 🎮 Live Demo
-* 🕹️ **[Survival Game Demo]([https://yosukira.itch.io/quantumfleet])** - A fully playable web game utilizing `Blaze2D`. It renders thousands of monsters, particles, and GPU-calculated damage numbers at a buttery smooth 60FPS. 
+* 🕹️ **[Survival Game Demo](https://yosukira.itch.io/quantumfleet)** - A fully playable web game utilizing `Blaze2D`. It renders thousands of monsters, particles, and GPU-calculated damage numbers at a buttery smooth 60FPS. 
 * <img width="215" height="925" alt="image" src="https://github.com/user-attachments/assets/5cd0b699-37b6-4a42-867e-e1c04560abf0" />
 
 
@@ -72,7 +72,7 @@ Blaze2D 是一个极高性能的 WebGL 2D 渲染器。它完美模拟了原生�
 如果你正在开发《吸血鬼幸存者》类的割草游戏（同屏出现成千上万的怪物、粒子和暴击伤害数字），原生的 Canvas 2D 会让帧率瞬间跌至个位数。而 Blaze2D 就是为了解决这个性能瓶颈而生的。
 
 ### 🎮 Demo
-* 🕹️ **[割草游戏Demo]([https://yosukira.itch.io/quantumfleet])** - 这是一个完整的可玩网页游戏，底层渲染全部由 `Blaze2D` 接管。在海量怪物与全屏特效下依然保持 60 帧满帧运行。
+* 🕹️ **[Survival Game Demo](https://yosukira.itch.io/quantumfleet)** - 这是一个完整的可玩网页游戏，底层渲染全部由 `Blaze2D` 接管。在海量怪物与全屏特效下依然保持 60 帧满帧运行。
 * <img width="215" height="925" alt="image" src="https://github.com/user-attachments/assets/5d0bf2eb-941e-481b-9584-ee91390d78cb" />
 
 
